@@ -1,0 +1,120 @@
+<div class="main-content">
+    
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Seleccione Curso y modulo a visualizar</h4>
+            <p class="card-category">A continuación seleccione el curso y modulo a visualizar</p>
+        </div>
+        <div class="card-body">
+            <div id="typography">
+                <div class="card-title">
+                    <h2>Seleccione</h2>
+                </div>
+                <div class="row">
+                    <div class="tim-typo">
+                        
+                    <!--Formulario de -->          
+                    <div class="card card-plain">
+                            <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Curso</label>
+                                    <select class="form-control" name="id_Curso" [(ngModel)]="id_Curso" (change)="CargarModulos()">                                            
+                                            <option  [ngValue]="null">Seleccione curso</option>
+                                            <option *ngFor="let item of listaCursos" [ngValue]="item.Id_curso">
+                                                    {{item.Nombre}}
+                                            </option>
+                                    </select>
+                            </div>
+                    </div> 
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+  
+  
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h5 class="card-title mt-0"> Modulos</h5>
+                        <p class="card-category"> A continuación en contrara La información de los modulos creados por el curso seleccionado</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Nombre Modulo
+                                    </th>
+                                    <th>
+                                        Descripcion Modulo
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of listaModulos">
+                                        <td>
+                                          {{item.Nombre}}
+                                        </td>
+                                        <td>
+                                          {{item.Descripcion}}
+                                        </td>
+                                    </tr>  
+                                                          
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+  
+                <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title">Creacion Nuevo Modulo</h4>
+                          <p class="card-category">A continuacion realizara la creación de un nuevo modulo del curso seleccionado</p>
+                      </div>
+                      <div class="card-body">
+                          <div id="typography">
+                              <div class="card-title">
+                                  <h2>Nuevo Modulo</h2>
+                              </div>
+                              <div class="row">
+                                  <div class="tim-typo">
+                                      <h1>
+                                          <span class="tim-note"> registro de Modulo </span>  </h1>
+                                  <!--Formulario de Registro-->
+                                          <form>
+                                                  <div class="form-group">
+                                                          <label for="exampleFormControlInput1">Nombre Modulo</label>
+                                                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese numero Celular"  [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Ingrese una descripción del Modulo</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  [(ngModel)]="descripcion" [ngModelOptions]="{standalone: true}"></textarea>
+                                                  </div>
+                                                  <!-- <div class="form-group">
+                                                    <select class="form-control" name="Curso" [(ngModel)]="id_CursoSeleccionado" [ngModelOptions]="{standalone: true}">
+                                                            <option [ngValue]="null" disabled>Seleccione curso</option>
+                                                            <option *ngFor="let item of listaCursos" [ngValue]="item.Id_curso">
+                                                                    {{item.Nombre}}
+                                                            </option>
+                                                    </select>
+                                                  </div> -->
+                                                  <td class="text-center">
+                                                        <a class="btn btn-round btn-fill btn-info" (click)="GuardarModulo()">Crear Modulo</a>
+                                                  </td>
+                                          </form>
+                                          
+                                  </div>
+              
+              
+              
+                              </div>
+                          </div>
+                      </div>
+  
+                
+            </div>
+        </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,100 @@
+
+<div class="main-content">
+    
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Seleccione Curso</h4>
+            <p class="card-category">A continuación seleccione el curso del cual requiere listar sus estudiantes</p>
+        </div>
+        <div class="card-body">
+            <div id="typography">
+                <div class="card-title">
+                    <h2>Seleccione el curso</h2>
+                </div>
+                <div class="row">
+                    <div class="tim-typo">
+                        
+                    <!--Formulario de -->          
+                    <div class="card card-plain">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Curso</label>                        
+                            <select class="form-control" name="id_Curso" [(ngModel)]="id_Curso" (change)="CargarCalificaciones()">
+                                <option [ngValue]="null">Seleccione curso</option>
+                                <option *ngFor="let item of listaCursos" [ngValue]="item.Id_curso">
+                                    {{item.Nombre}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+  
+  
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h5 class="card-title mt-0"> Modulos</h5>                            
+                        <p class="card-category"> A continuación se listara los estudiantes del curso seleccionado</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Nombre 
+                                    </th>
+                                    <th>
+                                        apellido
+                                    </th>
+                                    <th>
+                                        Tipo documento
+                                    </th>
+                                    <th>
+                                        Documento 
+                                    </th>
+                                    <th>
+                                        modulo
+                                    </th>
+                                    <th>
+                                        calificación 
+                                    </th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let calificacion of listaCalificaciones">
+                                            <td>
+                                                {{calificacion.usuarios.Nombres}}
+                                            </td>
+                                            <td>
+                                                {{calificacion.usuarios.Apellido}}
+                                            </td>
+                                            <td>
+                                                {{calificacion.usuarios.T_Doc}}
+                                            </td>
+                                            <td>
+                                                {{calificacion.usuarios.N_Doc}}
+                                            </td>
+                                            <td>
+                                                {{calificacion.modulo.Nombre}}
+                                            </td>
+                                            <td>                                                
+                                                <input type="text" class="form-control" placeholder="Ingrese calificación" [(ngModel)]="calificacion.Calificacion" >
+                                            </td>
+                                            <td>
+                                                <input type="button" class="btn btn-round btn-fill btn-info" value="Guardar" (click)="GuardarCalificacion(calificacion)"> 
+                                            </td>
+                                    </tr>                                             
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+  </div>
+  

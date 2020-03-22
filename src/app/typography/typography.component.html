@@ -1,0 +1,139 @@
+<div class="main-content">
+        <div class="container-fluid">
+                <div class="card">
+                        <div class="card-header card-header-danger">
+                                <h4 class="card-title">Busqueda de estudiante</h4>
+                                <p class="card-category">A continuación ingrese el numero de documento del estudiante a actualizar </p>
+                        </div>
+                        <div class="card-body">
+                                <div id="typography">
+                                        <div class="card-title">
+                                                <h2>Busqueda de estudiante</h2>
+                                        </div>
+                                        <div class="card-body">
+                                        <div class="row">
+                                                <div class="tim-typo">
+                                                        <h1>
+                                                                <span class="tim-note"> Busqueda de estudiante </span>
+                                                        </h1>
+                                                        <div>                                                                
+                                                                <input type="text" class="form-control"  [(ngModel)]="emailBusqueda"  min="0" max="9" placeholder="Ingrese email">
+                                                                <button mat-raised-button type="button" class="btn btn-white btn-round btn-just-icon" (click)="CosultarUsuario()">
+                                                                        <i class="material-icons">search</i>
+                                                                        <div class="ripple-container"></div>
+                                                                </button>
+                                                                <label>Buscar</label>
+                                                        </div>
+
+
+                                                </div>
+                                        </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class="container-fluid">
+
+
+                <div class="card">
+                        <div class="card-header card-header-danger">
+                                <h4 class="card-title">Registro</h4>
+                                <p class="card-category">Realice el registro de Usuario</p>
+                        </div>
+
+
+
+                        <div class="card-body">
+                                <div id="typography">
+                                        <div class="card-title">
+                                                <h2>Registro de Usuario</h2>
+                                        </div>
+                                        <div class="row">
+                                                <div class="tim-typo">
+                                                        <h1>
+                                                                <span class="tim-note"> registro de Usuario </span>
+                                                        </h1>
+                                                        <!--Formulario de Registro-->
+                                                        <form #UsuarioForm="ngForm" (ngSubmit)="onFormSubmit()">
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlSelect1">Tipo de Documento</label>
+                                                                        <select name="TipoDocumento" [(ngModel)]="TipoDocumento" required class="form-control">
+                                                                                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                                                                <option value="Cedula de ciudadania">Cedula de ciudadania</option>
+                                                                                <option value="Nuip">Nuip</option>
+                                                                        </select>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Numero de Identificación</label>
+                                                                        <input type="text" name="NumeroIdentificacion" [(ngModel)]="NumeroIdentificacion" required class="form-control" placeholder="Ingrese su número de Identificación">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Nombre</label>
+                                                                        <input type="text" name="Nombre" [(ngModel)]="Nombre" required class="form-control" placeholder="Ingrese Nombre">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Apellido</label>
+                                                                        <input type="text" class="form-control" name="Apellido" [(ngModel)]="Apellido" required placeholder="Ingrese su Apellido">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Fecha de nacimiento</label>
+                                                                        <input type="date" class="form-control" name="FechaNacimiento" [(ngModel)]="FechaNacimiento" required placeholder="Ingrese su Apellido">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Email address</label>
+                                                                        <input type="email" class="form-control" name="email" [(ngModel)]="email" required placeholder="name@example.com">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Telefono</label>
+                                                                        <input type="tel" class="form-control" name="Telefono" [(ngModel)]="Telefono" required placeholder="Ingrese numero telefonico">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Celular</label>
+                                                                        <input type="tel" class="form-control" name="Celular" [(ngModel)]="Celular" required placeholder="Ingrese numero Celular">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlSelect1">Genero</label>
+                                                                        <select class="form-control" name="Genero" [(ngModel)]="Genero" required>
+                                                                                <option value="Femenino">Femenino</option>
+                                                                                <option value="Masculino">Masculino</option>
+                                                                        </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlSelect1">Ingrese su Rol</label>
+                                                                        <select class="form-control" name="Rol" [(ngModel)]="Rol" required>
+                                                                                <option value="1">Profesor</option>
+                                                                                <option value="2">Alumno</option>
+                                                                        </select>
+                                                                </div>                                                                
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlSelect1">Discapacidad</label>
+                                                                        <select class="form-control" name="id_Discapacidad" [(ngModel)]="id_Discapacidad" required>
+                                                                                <option [ngValue]="null">Seleccione discapacidad</option>
+                                                                                <option *ngFor="let item of listaDiscapacidad" [ngValue]="item.Id_discapacidad">
+                                                                                        {{item.Nombre}}
+                                                                                </option>
+                                                                        </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Contraseña</label>
+                                                                        <input type="text" class="form-control" name="contrasena" [(ngModel)]="contrasena" required placeholder="Ingrese contraseña">
+                                                                </div>
+
+                                                                <div class="form-group" align="center">
+                                                                        <input type="submit" [disabled]="UsuarioForm.invalid" class="btn btn-round btn-fill btn-info" value="Registro">
+                                                                </div>
+                                                        </form>
+                                                </div>
+
+
+
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>

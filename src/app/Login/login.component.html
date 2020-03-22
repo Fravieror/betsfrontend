@@ -1,0 +1,31 @@
+<!-- <div class="main-content" style="width: 400px; margin-left: 40%; margin-top: 10%; height: 200px"> -->
+        <div class="login-form-container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12"></div>
+                    <div class="col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Login</h4>
+                            <p class="card-category">Iniciar sesion</p>
+                        </div>
+                        <div class="card-body">                            
+                                <form  #loginForm="ngForm" (ngSubmit)="onFormSubmit()">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control"   placeholder="Ingrese email" [(ngModel)]="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password"  class="form-control"  placeholder="Ingrese Contraseña" [(ngModel)]="contrasena" required>
+                                    </div>
+                                    <div class="form-group" align="center">
+                                        <input type="submit" [disabled]="loginForm.invalid" class="btn btn-round btn-fill btn-info" value="Ingresar">
+                                    </div>
+                                </form>                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12"></div>
+                </div>
+            </div>
+        </div>
+<!-- </div> -->

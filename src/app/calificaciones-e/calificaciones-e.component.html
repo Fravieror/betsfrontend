@@ -1,0 +1,47 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title">Creacion Nuevo Curso</h4>
+                          <p class="card-category">A continuacion realice la creación del curso</p>
+                      </div>
+                      <div class="card-body">
+                          <div id="typography">
+                              <div class="card-title">
+                                  <h2>Nuevo Curso</h2>
+                              </div>
+                              <div class="row">
+                                  <div class="tim-typo">
+                                      <h1>
+                                          <span class="tim-note"> registro de Usuario </span>  </h1>
+                                  <!--Formulario de Registro-->
+                                          <form >
+                                                  <div class="form-group">
+                                                          <label for="exampleFormControlInput1">Nombre Curso</label>
+                                                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese nombre del curso" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}" >
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Ingrese una descripción del Curso</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="descripcion"  [ngModelOptions]="{standalone: true}"></textarea>
+                                                  </div>
+                                                  <td class="text-center">
+                                                          <a class="btn btn-round btn-fill btn-info" (click)="GuardarCurso()">Crear Curso</a>
+                                                  </td>
+                                          </form>
+                                          
+                                  </div>
+              
+              
+              
+                              </div>
+                          </div>
+                      </div>
+  
+                
+            </div>
+        </div>
+    </div>
+  </div>
+  

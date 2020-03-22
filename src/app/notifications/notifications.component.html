@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">modulo</label>
+                            <select class="form-control" name="id_Modulo" [(ngModel)]="Id_modulo" (change)="CargarCurso()">
+                                <option [ngValue]="null">Seleccione modulo</option>
+                                <option *ngFor="let item of listaModulos" [ngValue]="item.Id_modulo">
+                                    {{item.modulo.Nombre}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Buenvenido a su curso</h4>
+                        <p class="card-category">A continuación podra visualizar el material del curso al cual se encuentra Inscrito</p>
+                    </div>
+                    <br>
+                    <div *ngIf="ViewVideo" class="row loading" >                        
+                        <div align="center" class="col-md-12 col-sm-12" style=" width: 100%;
+                        height: 100%;
+                        top: 5px;                     
+                        left: 0px;
+                        position: fixed;
+                        display: block;
+                        opacity: 1.0;
+                        background-color: #fff;
+                        z-index: 99;
+                        text-align: center;">
+                            <input type="button" class="btn btn-round btn-fill btn-info" value="Cerrar" (click)="CerrarVideo()">                                                              
+                            <br>
+                            <video autoplay="autoplay" width="800" [src]="ViewVideo" controls>
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>                        
+                    </div>
+                    <div class="card-body" *ngIf="herramientas">
+                        <div id="typography" *ngFor="let herramienta of herramientas">
+                            <div class="card-title">
+                                <h2>Curso:</h2>
+                            </div>
+                            <div class="row">
+                                <div class="tim-typo">
+                                    <h1>
+                                        <span class="tim-note"> Visualizacion curso </span>
+                                    </h1>
+                                    <!--Formulario de Registro-->
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Nombre Curso</label>
+                                            <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="herramienta.curso.Nombre"  placeholder="Ingrese numero Celular" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">descripción del Curso</label>
+                                            <textarea class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="herramienta.curso.Descripcion" disabled rows="3"></textarea>
+                                        </div>
+                                        <td class="text-center">
+                                                <input type="button" class="btn btn-round btn-fill btn-info" value="Descargar Herramienta" (click)="DescargarAdjunto(herramienta.RutaPDF)" *ngIf="herramienta.RutaPDF">                                                              
+                                        </td>
+                                        <td class="text-center">
+                                            <input type="button" class="btn btn-round btn-fill btn-info" value="Descargar Herramienta" (click)="VerVideo(herramienta.RutaVideo)" *ngIf="herramienta.RutaVideo">                                                              
+                                        </td>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

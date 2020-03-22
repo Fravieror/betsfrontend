@@ -1,0 +1,166 @@
+<div class="main-content">
+        
+    <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">Seleccione Curso y modulo a visualizar</h4>
+                <p class="card-category">A continuación seleccione el curso y modulo a visualizar</p>
+            </div>
+            <div class="card-body">
+                <div id="typography">
+                    <div class="card-title">
+                        <h2>Seleccione</h2>
+                    </div>
+                    <div class="row">
+                        <div class="tim-typo">
+                            
+                        <!--Formulario de -->
+                                
+                        <div class="card card-plain">
+                                <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Curso</label>
+                                        <select class="form-control" name="id_Curso" [(ngModel)]="id_Curso" (change)="CargarModulos()">                                            
+                                                <option  [ngValue]="null">Seleccione curso</option>
+                                                <option *ngFor="let item of listaCursos" [ngValue]="item.Id_curso">
+                                                        {{item.Nombre}}
+                                                </option>
+                                        </select>
+                                </div>
+                                <div class="form-group">
+                                        <label for="exampleFormControlSelect1">modulo</label>
+                                        <select class="form-control" name="id_Modulo" [(ngModel)]="id_Modulo" (change)="CargarHerramientas()">                                            
+                                                <option  [ngValue]="null">Seleccione modulo</option>
+                                                <option *ngFor="let item of listaModulos" [ngValue]="item.Id_modulo">
+                                                        {{item.Nombre}}
+                                                </option>
+                                        </select>
+                                </div>
+                        </div> 
+
+                        </div>
+                    </div>
+                </div>
+            </div> 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h5 class="card-title mt-0"> Herramientas</h5>
+                        <p class="card-category"> A continuación en contrara La información de las herramientas creadas por el curso y modulos seleccionados</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Nombre herramienta
+                                    </th>
+                                    <th>
+                                        Descripcion Herramienta
+                                    </th>
+                                    <th>
+                                        Discapacidad
+                                    </th>
+                                    <th>
+                                        Archivo Adjunto
+                                    </th>
+                                    <th>
+                                        Video
+                                    </th>
+                                </thead>
+                                <tbody>                                    
+                                    <tr *ngFor="let item of listaHerramientas">
+                                        <td>
+                                            {{item.Nombre}}
+                                        </td>
+                                        <td>
+                                            {{item.Descripcion}}
+                                        </td>
+                                        <td>
+                                            {{item.Id_discapacidad}}
+                                        </td>
+                                        <td>
+                                            <input type="button" class="btn btn-round btn-fill btn-info" value="Descargar Herramienta" (click)="DescargarAdjunto(item.RutaPDF)" *ngIf="item.RutaPDF">                                                              
+                                        </td>
+                                        <td>
+                                            <input type="button" class="btn btn-round btn-fill btn-info" value="Descargar Herramienta" (click)="VerVideo(item.RutaVideo)" *ngIf="item.RutaVideo">                                                              
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>                            
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="ViewVideo" class="row loading" >                        
+                        <div align="center" class="col-md-12 col-sm-12" style=" width: 100%;
+                        height: 100%;
+                        top: 5px;                     
+                        left: 0px;
+                        position: fixed;
+                        display: block;
+                        opacity: 1.0;
+                        background-color: #fff;
+                        z-index: 99;
+                        text-align: center;">
+                            <input type="button" class="btn btn-round btn-fill btn-info" value="Cerrar" (click)="CerrarVideo()">                                                              
+                            <br>
+                            <video autoplay="autoplay" width="800" [src]="ViewVideo" controls>
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>                        
+                    </div>
+                <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title">Creacion Nueva Herramienta</h4>
+                          <p class="card-category">A continuacion realizara la creación de un nueva herramienta del curso y modulo seleccionado</p>
+                      </div>
+                      <div class="card-body">
+                          <div id="typography">
+                              <div class="card-title">
+                                  <h2>Nueva herramienta</h2>
+                              </div>
+                              <div class="row">
+                                  <div class="tim-typo">
+                                      <h1>
+                                          <span class="tim-note"> registro de Herramienta </span>  </h1>
+                                  <!--Formulario de -->
+                                          <form #HerramientaForm="ngForm" (ngSubmit)="onFormSubmit()">
+                                                  <div class="form-group">
+                                                          <label for="exampleFormControlInput1">Nombre Herramienta</label>
+                                                          <input type="text"  name="Nombre" [(ngModel)]="Nombre" required   class="form-control" placeholder="Nombre">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Ingrese una descripción de la herramienta</label>
+                                                    <textarea class="form-control" name="Descripcion" [(ngModel)]="Descripcion" required  rows="3"></textarea>
+                                                  </div>
+                                                  <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">Seleccione discapacidad a la que aplica</label>
+                                                        <select class="form-control" name="id_discapacidad" [(ngModel)]="id_discapacidad" required>                                            
+                                                                <option  [ngValue]="null">Seleccione discapacidad</option>
+                                                                <option *ngFor="let item of listaDiscapacidad" [ngValue]="item.Id_discapacidad">
+                                                                        {{item.Nombre}}
+                                                                </option>
+                                                        </select>
+                                                </div>
+                                                <br>
+                                                <label for="exampleFormControlSelect1">Adjuntar PDF</label>
+                                                <input type="file" class="form-control" Id="InputPDF" value="Importar PDF" [ngModelOptions]="{standalone: true}" [(ngModel)]="pdf" (change)="handlePDFSelect($event)">
+                                                <br>
+                                                <label for="exampleFormControlSelect1">Adjuntar Video</label>
+                                                <input class="form-control" type="file" Id="InputVideo" [ngModelOptions]="{standalone: true}" [(ngModel)]="video"  (change)="handleVideoSelect($event)">
+                                                <br>
+                                                <div class="text-center">
+                                                    <input type="submit" [disabled]="HerramientaForm.invalid" class="btn btn-round btn-fill btn-info" value="Crear Herramienta">                                                              
+                                                </div>                   
+                                          </form>  
+                                                      
+                                  </div>
+                              </div>
+                          </div>
+                      </div>  
+            </div>
+        </div>
+    </div>
+  </div>
+  
